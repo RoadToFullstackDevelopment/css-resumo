@@ -77,11 +77,12 @@ h1 {
 
 ## O que é um seletor?
 Seletor é uma expressão usada para escolher uma parte do documento que será modificada. Temos os seguintes tipos:
-**Seletor universal (*)**: Seleciona TODOS os elementos de uma página.
-**Seletor de tipo**: Seleciona o elemento propriamente dito.
-**Seletor de classe (.)**: Seleciona uma classe específica.
-**Seletor de id (#)**: Seleciona um *id* específico.
-**Seletor descendente**: Seleciona elementos que estão dentro de outro elemento, ou seja, os elementos descendentes (filhos) do elemento principal (pai).
+
+* **Seletor universal (*)**: Seleciona TODOS os elementos de uma página.
+* **Seletor de tipo**: Seleciona o elemento propriamente dito.
+* **Seletor de classe (.)**: Seleciona uma classe específica.
+* **Seletor de id (#)**: Seleciona um *id* específico.
+* **Seletor descendente**: Seleciona elementos que estão dentro de outro elemento, ou seja, os elementos descendentes (filhos) do elemento principal (pai).
 
 #### Arquivo HTML
 
