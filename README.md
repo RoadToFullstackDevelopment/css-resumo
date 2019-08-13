@@ -4,33 +4,33 @@
 
 Podemos aplicar os estilos CSS a uma página *web* de três formas:
 
-**Exemplo 1**: Usar o atributo ***style*** diretamente no elemento.
+**Exemplo 1**: Usar o atributo `style` diretamente no elemento.
 
 ```
 <h1 style=”color: red; font-family: Arial; font-size: 70px”>Título da página</h1>
 ```
 
-**Exemplo 2**: Incluindo o marcador ***style*** dentro do ***head***.
+**Exemplo 2**: Incluindo o marcador `style` dentro do `head`.
 
 ```
 <!DOCTYPE html>
-    <head>
-        <title>Minha primeira página</title>
-        <style>
-            h1 {
-                color: red;
-                font-family: Arial;
-                font-size: 70px;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Título da página</h1>
-    </body>
+  <head>
+    <title>Minha primeira página</title>
+    <style>
+      h1 {
+        color: red;
+        font-family: Arial;
+        font-size: 70px;
+      }
+    </style>
+  </head>
+  <body>
+      <h1>Título da página</h1>
+  </body>
 </html>
 ```
 
-**Exemplo 3**: Incluindo o marcador ***link*** dentro do ***head*** e ali anexar um arquivo css externo.
+**Exemplo 3**: Incluindo o marcador `link` dentro do `head` e ali anexar um arquivo css externo.
 
 #### Arquivo HTML
 
@@ -60,17 +60,149 @@ h1 {
 
 **CSS** significa ***Cascading Style Sheets***. É usado para definir estilos nas páginas *web*, incluindo *design*, *layout* e variações para dispositivos e tamanhos de tela diferentes. O objetivo do CSS é permitir aos desenvolvedores a separação do conteúdo e estrutura do código do *design* visual do *site*.
 
-## Como utilizar variáveis no Sass?
+## O que são propriedades e valores?
+**Propriedades** são identificadores que indicam qual recurso de estilo (largura, cor de fundo, fonte) será alterado.
+**Valores** indicam o modo pelo qual determinada característica será alterada (tipo de fonte, qual será a largura, qual cor usar).
 
-Pense em variáveis como um modo de armazenar a informação quer reutilizar por toda a sua folha de estilos. Você pode armazenar elementos como cores, fontes ou qualquer valor CSS que queira reutilizar. O Sass usa o símbolo **$** para transformar algo em uma variável.
+#### Exemplo
 
 ```
-$font-stack:    Helvetica, sans-serif;
-$primary-color: #333;
+h1 {
+  font-size: 60px;
+  color: red;
+}
 
-body {
-  font: 100% $font-stack;
-  color: $primary-color;
+/* Neste exemplo, font-size e color são as propriedades, enquanto que 60px e red são os valores de font-size e color, respectivamente */
+```
+
+## O que é um seletor?
+Seletor é uma expressão usada para escolher uma parte do documento que será modificada. Temos os seguintes tipos:
+**Seletor universal (*)**: Seleciona TODOS os elementos de uma página.
+**Seletor de tipo**: Seleciona o elemento propriamente dito.
+**Seletor de classe (.)**: Seleciona uma classe específica.
+**Seletor de id (#)**: Seleciona um *id* específico.
+**Seletor descendente**: Seleciona elementos que estão dentro de outro elemento, ou seja, os elementos descendentes (filhos) do elemento principal (pai).
+
+#### Arquivo HTML
+
+```
+<!DOCTYPE html>
+  <head>
+    <title>My page</title>
+  </head>
+  <body>
+    <h1>Welcome to my homepage</h1>
+    <div>
+      <h2>About Me</h2>
+      <p>My name is Donald.</p>
+      <p>I live in Duckburg.</p>
+    </div>
+    <p>My best friend is Mickey.</p>
+    <ul>
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Milk</li>
+    </ul>
+    <h2>Another list</h2>
+    <ul>
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Milk</li>
+    </ul>
+  </body>
+</html>
+```
+
+#### Arquivo CSS
+
+```
+/* Seleciona todos os elementos da página */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Seleciona todos os elementos <p> da página */
+p {
+  color: red;
+  border: 1px solid blue;
+}
+
+/* Seleciona todos os elementos <p> que estão dentro do elemento <div>, ou seja, os elementos <p> que são filhos (descendentes) de <div> (elemento principal) */
+div p {
+  color: red;
+  border: 1px solid blue;
+}
+
+/* Seleciona o elemento <div> e todos os elementos <p> */
+div, p {
+  color: red;
+}
+
+/* Seleciona todos os elementos <p> que estão dentro do elemento <div>, ou seja, os elementos <p> que são filhos (descendentes) de <div> (elemento principal) */
+div > p {
+  color: red;
+}
+
+/* Seleciona somente o elemento <p> que está fora do elemento <div> */
+div + p {
+  color: red;
+}
+
+/* Seleciona todos os elementos <ul> que aparecem depois do elemento <p> */
+p ~ ul {
+  background-color: red;
+}
+```
+
+## O que é um pseudo-seletor?
+**Pseudo-seletores** são seletores que estão implícitos no documento.
+
+#### Arquivo HTML
+
+```
+<html>
+  <head>
+    <title>Minha página</title>
+  </head>
+  <body>
+    <a href="https://www.google.com">Visite o Google</a>
+    <a href="https://www.wikipedia.org" target="_blank">Visite a Wikipedia</a>
+  </body>
+</html>
+```
+#### Arquivo CSS
+
+```
+/* Somente o atalho com o atributo target será selecionado */
+a[target] {
+  background-color: aqua;
+}
+
+/* Atalho no estado normal */
+a:link {
+  text-decoration: none;
+}
+
+/* Atalho já visitado */
+a:visited {
+  color: green;
+}
+
+/* Quando o mouse está em cima do atalho */
+a:hover {
+  color: purple;
+}
+
+/* Foco no atalho */
+a:focus {
+  color: orange;
+}
+
+/* O atalho é ativado */
+a:active {
+  color: red;
 }
 ```
 
@@ -101,6 +233,20 @@ Com o *Document Object Model*, programadores podem criar e construir documentos,
 
 **Sass**, ou ***Syntactically Awesome Style Sheets***, é um pré-processador que adiciona poder e elegância a uma linguagem básica, permitindo o uso de variáveis, regras aninhadas, *mixins*, importações em linha e muito mais, tudo com uma sintaxe totalmente compatível com CSS. O Sass ajuda a manter grandes folhas de estilo bem organizadas e faz com que folhas de estilo pequenas funcionem com rapidez.
 Um pré-processador CSS é uma linguagem de *script* que extende o CSS, permitindo que desenvolvedores escrevam código em uma linguagem e então compilá-la em CSS.
+
+## Como utilizar variáveis no Sass?
+
+Pense em variáveis como um modo de armazenar a informação quer reutilizar por toda a sua folha de estilos. Você pode armazenar elementos como cores, fontes ou qualquer valor CSS que queira reutilizar. O Sass usa o símbolo **$** para transformar algo em uma variável.
+
+```
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+```
 
 ## Quais são as principais funcionalidades do Sass?
 
